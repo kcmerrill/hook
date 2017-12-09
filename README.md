@@ -3,8 +3,9 @@
 
 # Hook
 
-Add hooks, register events or filter data.
+Add hooks, register events or filter data. 
 
+Here are some examples with and without priority(notice the ordering). 
 ```golang
 func TestPriorityOrder(t *testing.T) {
 	Register("wordp", 3, func(word *string) {
