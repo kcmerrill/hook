@@ -6,12 +6,12 @@
 Add plugins, hooks, events or filter data within your go application.
 
 ```golang
-Register("add-to-text", func(w *string) {
-    *word += " More content added to the text."
+Register("add-to-text", func(t *string) {
+    *t += " More content added to the text."
 })
 
-Register("add-to-text", func(w *string) {
-    *word += " This will be added too!"
+Register("add-to-text", func(t *string) {
+    *t += " This will be added too!"
 })
 
 
