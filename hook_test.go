@@ -71,3 +71,14 @@ func TestOrder(t *testing.T) {
 		log.Fatalf("cab was expected")
 	}
 }
+
+func TestPlugin(t *testing.T) {
+	Register("extra-text-to-word", "python plugin/python.py")
+
+	p := "hi"
+	Filter("extra-text-to-word", &p)
+
+	if p != "hi-from-plugin" {
+		t.Fatalf("Unable to call plugin")
+	}
+}

@@ -3,42 +3,32 @@
 
 # Hook
 
-Add hooks, register events or filter data. 
+Add plugins, hooks, events or filter data within your go application.
 
-Here are some examples with and without priority(notice the ordering). 
 ```golang
-func TestPriorityOrder(t *testing.T) {
-	Register("wordp", 3, func(word *string) {
-		*word += "c"
-	})
-	Register("wordp", 1, func(word *string) {
-		*word += "a"
-	})
-	Register("wordp", 2, func(word *string) {
-		*word += "b"
-	})
+Register("add-to-text", func(w *string) {
+    *word += " More content added to the text."
+})
 
-	wordp := ""
-	Trigger("wordp", &wordp)
-	if wordp != "abc" {
-		log.Fatalf("abc was expected")
-	}
-}
+Register("add-to-text", func(w *string) {
+    *word += " This will be added too!"
+})
 
-func TestOrder(t *testing.T) {
-	Register("word", func(word *string) {
-		*word += "c"
-	})
-	Register("word", func(word *string) {
-		*word += "a"
-	})
-	Register("word", func(word *string) {
-		*word += "b"
-	})
-	word := ""
-	Filter("word", &word)
-	if word != "cab" {
-		log.Fatalf("cab was expected")
-	}
-}
+
+
+words := "my simple text."
+
+Filter("add-to-text", &words)
+
+fmt.Println(words)
+// my simple text. More content added to the text. This will be added too!
+```
+
+Want to add plugins? Instead of registering a function, register an executable command. `STDIN` will be passed as a json marshal'd interface that you pass in. The application will modify the contents to it's choosing, and then return. Assuming no errors, the new value will be unmarshal'd and set to the given interface.
+
+```golang
+Register("extra-text-to-word", "python plugin/python.py")
+text := "hi"
+Filter("extra-text-to-word", &text)
+// hi-from-plugin
 ```
