@@ -39,7 +39,7 @@ func Register(trigger string, args ...interface{}) {
 
 	str := args[len(args)-1]
 
-	// if the last element you pass in is a string, and not a fucntion, then lets default to exec
+	// if the last element you pass in is a string, and not a function, then lets default to exec
 	if _, isString := str.(string); isString {
 		f = func(i interface{}) {
 			payload, err := json.Marshal(i)
