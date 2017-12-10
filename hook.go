@@ -87,10 +87,6 @@ func Trigger(trigger string, args ...interface{}) {
 	}
 }
 
-func plugin(i *interface{}) {
-
-}
-
 // Giddy Up
 func init() {
 	Filter = Trigger
