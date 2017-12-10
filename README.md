@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/kcmerrill/hook.svg?branch=master)](https://travis-ci.org/kcmerrill/hook)
+[![Build Status](https://travis-ci.org/kcmerrill/hook.svg?branch=master)](https://travis-ci.org/kcmerrill/hook) [![Go Report Card](https://goreportcard.com/badge/github.com/kcmerrill/hook)](https://goreportcard.com/report/github.com/kcmerrill/hook)
 ![hook](captain.hook.jpg)
 
 # Hook
