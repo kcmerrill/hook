@@ -3,7 +3,6 @@ package hook
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"os/exec"
 	"reflect"
 	"sync"
